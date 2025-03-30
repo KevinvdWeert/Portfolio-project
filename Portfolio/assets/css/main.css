@@ -5,10 +5,10 @@
 }
 
 :root { 
-  --background-color: #ffffff;
-  --default-color: #272829;
-  --heading-color: #050d18;
-  --accent-color: #149ddd;
+  --background-color: #f8f9fa;
+  --default-color: #212529;
+  --heading-color: #343a40;
+  --accent-color: #007bff;
   --surface-color: #ffffff;
   --contrast-color: #ffffff;
 }
@@ -68,12 +68,13 @@ h6 {
 
 .php-email-form .error-message {
   display: none;
-  background: #df1529;
+  background-color: green;
   color: #ffffff;
   text-align: left;
   padding: 15px;
   margin-bottom: 24px;
   font-weight: 600;
+  border-radius: 15px;
 }
 
 .php-email-form .sent-message {
@@ -285,7 +286,7 @@ h6 {
 .navmenu a:hover,
 .navmenu .active,
 .navmenu .active:focus {
-  color: var(--nav-hover-color);
+  color: var(--accent-color);
 }
 
 .navmenu a:hover .navicon,
@@ -1077,6 +1078,64 @@ section,
   background: color-mix(in srgb, var(--accent-color), transparent 25%);
 }
 
+/* Login Page Styles */
+.login-container {
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: var(--surface-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--heading-color);
+}
+
+.login-container .form-group {
+  margin-bottom: 15px;
+}
+
+.login-container label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--default-color);
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 80%);
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: var(--default-color);
+  background-color: var(--surface-color);
+}
+
+.login-container button[type="submit"] {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.login-container button[type="submit"]:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 25%);
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
 .portfolio-details .portfolio-details-slider img {
   width: 100%;
 }
@@ -1195,4 +1254,81 @@ section,
   font-size: 20px;
   margin-right: 8px;
   color: var(--accent-color);
+}
+
+/* Admin Page Styles */
+.admin-page .login-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.admin-page .login-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.admin-page .form-group {
+  margin-bottom: 20px;
+}
+
+.admin-page .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.admin-page .form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.admin-page .btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-page .btn:hover {
+  background-color: #2980b9;
+}
+
+.admin-page .alert {
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+.admin-page .alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Admin Panel Styles */
+.admin-section .service-item {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.admin-section .service-item:hover {
+  transform: translateY(-5px);
+}
+
+.admin-section .icon {
+  font-size: 24px;
+  color: #3498db;
+  margin-right: 15px;
 }

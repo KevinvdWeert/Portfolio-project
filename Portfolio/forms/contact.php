@@ -1,41 +1,25 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars($_POST['name']);
+    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+    $subject = htmlspecialchars($_POST['subject']);
+    $message = htmlspecialchars($_POST['message']);
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'contact@example.com';
+    if ($email) {
+        // Log the message
+        $logDir = __DIR__ . '/../log';
+        if (!is_dir($logDir)) {
+            mkdir($logDir, 0777, true);
+        }
+        $logFile = $logDir . '/messages.txt';
+        $logMessage = "Date: " . date('Y-m-d H:i:s') . "\nName: $name\nEmail: $email\nSubject: $subject\nMessage:\n$message\n\n";
+        file_put_contents($logFile, $logMessage, FILE_APPEND);
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
-
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
-
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
-
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
-
-  echo $contact->send();
+        echo "<div style='background: #059652; color: #ffffff; padding: 15px; text-align: center; font-weight: 600;'>Message sent</div>";
+    } else {
+        echo "<div style='background: #059652; color: #ffffff; padding: 15px; text-align: center; font-weight: 600;'>Invalid email</div>";
+    }
+} else {
+    echo "<div style='background: #059652; color: #ffffff; padding: 15px; text-align: center; font-weight: 600;'>Invalid request</div>";
+}
 ?>

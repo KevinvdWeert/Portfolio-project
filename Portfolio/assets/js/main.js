@@ -63,7 +63,7 @@
   window.addEventListener('load', aosInit);
 
   const selectTyped = document.querySelector('.typed');
-  if (selectTyped) {
+  if (selectTyped && window.Typed) {
     let typed_strings = selectTyped.getAttribute('data-typed-items');
     typed_strings = typed_strings.split(',');
     new Typed('.typed', {
@@ -73,6 +73,11 @@
       backSpeed: 50,
       backDelay: 2000
     });
+  }
+
+  // Add fallback for Typed.js
+  if (!window.Typed) {
+    console.warn("Typed.js is not loaded. Skipping typed animation.");
   }
 
   new PureCounter();
@@ -140,6 +145,16 @@
 
   window.addEventListener("load", initSwiper);
 
+  // Improve scroll-to-section logic
+  window.addEventListener('load', () => {
+    if (window.location.hash) {
+      const section = document.querySelector(window.location.hash);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  });
+
   window.addEventListener('load', function(e) {
     if (window.location.hash) {
       if (document.querySelector(window.location.hash)) {
@@ -173,5 +188,48 @@
   }
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
+
+  // Add lazy loading for images
+  document.querySelectorAll('img').forEach(img => {
+    img.setAttribute('loading', 'lazy');
+  });
+
+  document.querySelector('.php-email-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const form = this;
+    const formData = new FormData(form);
+    const loading = form.querySelector('.loading');
+    const errorMessage = form.querySelector('.error-message');
+    const sentMessage = form.querySelector('.sent-message');
+  
+    loading.style.display = 'block';
+    errorMessage.style.display = 'none';
+    sentMessage.style.display = 'none';
+  
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+    })
+      .then(response => response.text())
+      .then(data => {
+        loading.style.display = 'none';
+        if (data === 'success') {
+          sentMessage.style.display = 'block';
+          form.reset();
+        } else if (data === 'invalid_email') {
+          errorMessage.style.display = 'block';
+          errorMessage.textContent = 'Please enter a valid email address.';
+        }
+         else {
+          errorMessage.style.display = 'block';
+          errorMessage.textContent = 'An error occurred. Please try again.';
+        }
+      })
+      .catch(() => {
+        loading.style.display = 'none';
+        errorMessage.style.display = 'block';
+        errorMessage.textContent = 'An error occurred. Please try again.';
+      });
+  });
 
 })();
