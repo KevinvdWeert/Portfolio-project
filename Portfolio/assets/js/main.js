@@ -226,4 +226,11 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+  /**
+   * Debugging: Log missing resources
+   */
+  window.addEventListener('error', function(e) {
+    console.error('Resource failed to load:', e.target.src || e.target.href);
+  }, true);
+
 })();
