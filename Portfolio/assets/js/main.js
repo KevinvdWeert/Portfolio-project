@@ -233,4 +233,26 @@
     console.error('Resource failed to load:', e.target.src || e.target.href);
   }, true);
 
+  /**
+   * Handle contact form submission
+   */
+  const contactForm = document.querySelector('.php-email-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(contactForm);
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+      });
+      const result = await response.json();
+      if (result.status === 'success') {
+        alert(result.message);
+        contactForm.reset();
+      } else {
+        alert(result.message);
+      }
+    });
+  }
+
 })();
