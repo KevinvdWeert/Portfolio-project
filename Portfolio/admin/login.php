@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h1 class="mb-2 mb-lg-0">Admin Login</h1>
         </div>
     </div>
-    <section class="section d-flex justify-content-center align-items-center" style="min-height: calc(100vh - 100px - 50px); width: 100vw; background-image: url('../admin/assets/img/IMG_9296.jpg'); background-size: cover; background-position: center;">
+    <section class="section d-flex justify-content-center align-items-center" style="min-height: calc(100vh - 100px - 50px); background-image: url('../admin/assets/img/IMG_9296.jpg'); background-size: cover; background-position: center;">
         <div class="card shadow-lg" style="width: 100%; max-width: 400px;">
             <div class="card-body">
                 <?php if (isset($error)) echo "<p class='text-danger text-center'>$error</p>"; ?>
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </section>
 </main>
 
-<footer id="footer" class="footer position-relative light-background">
+<footer id="footer" class="footer position-relative dark-background">
     <div class="container">
         <div class="copyright text-center">
             <p>© <strong class="px-1 sitename">Portfolio Admin</strong> All Rights Reserved</p>
