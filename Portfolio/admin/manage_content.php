@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Manage Content</title>
     <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
@@ -25,7 +25,7 @@
         <ul>
             <li><a href="./index.php"><i class="bi bi-house navicon"></i>Home</a></li>
             <li><a href="manage_users.php"><i class="bi bi-people navicon"></i> Manage Users</a></li>
-            <li><a href="manage_content.php"><i class="bi bi-file-earmark-text navicon"></i> Manage Content</a></li>
+            <li><a href="manage_content.php" class="active"><i class="bi bi-file-earmark-text navicon"></i> Manage Content</a></li>
             <li><a href="settings.php"><i class="bi bi-gear navicon"></i> Settings</a></li>
             <li><a href="logout.php"><i class="bi bi-box-arrow-right navicon"></i> Logout</a></li>
         </ul>
@@ -35,11 +35,12 @@
 <main class="main">
     <div class="page-title dark-background">
         <div class="container d-lg-flex justify-content-between align-items-center">
-            <h1 class="mb-2 mb-lg-0">Admin Dashboard</h1>
+            <h1 class="mb-2 mb-lg-0">Manage Content</h1>
         </div>
     </div>
     <section class="container section">
-        <h1 class="text-center">Welcome to the Admin Dashboard</h1>
+        <h1 class="text-center">Content Management Section</h1>
+        <p class="text-center">This is where you can manage your website's content.</p>
     </section>
 </main>
 

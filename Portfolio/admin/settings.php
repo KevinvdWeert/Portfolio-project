@@ -23,7 +23,7 @@
     </a>
     <nav id="navmenu" class="navmenu">
         <ul>
-            <li><a href="../index.php"><i class="bi bi-house navicon"></i>Home</a></li>
+            <li><a href="./index.php"><i class="bi bi-house navicon"></i>Home</a></li>
             <li><a href="manage_users.php"><i class="bi bi-people navicon"></i> Manage Users</a></li>
             <li><a href="manage_content.php"><i class="bi bi-file-earmark-text navicon"></i> Manage Content</a></li>
             <li><a href="settings.php" class="active"><i class="bi bi-gear navicon"></i> Settings</a></li>
